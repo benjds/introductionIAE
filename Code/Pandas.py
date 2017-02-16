@@ -139,3 +139,18 @@ print(Trainset)
 Trainset.pop("index")
 print(Trainset)
 
+
+# setting a generic path
+import os
+outpath = os.path.abspath('../Results/export.csv')
+print(outpath)
+
+if not os.path.exists(os.path.abspath("../Results")):
+    os.makedirs("../Results")
+
+# exporting to csv file (without row numbers)
+Trainset.to_csv(outpath, index_label=False, sep=";")
+
+# reading csv file
+Trainset = pa.read_csv(outpath)
+print(Trainset)
